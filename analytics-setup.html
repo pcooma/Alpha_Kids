@@ -1,0 +1,238 @@
+<!--
+    GOOGLE ANALYTICS & TRACKING SETUP
+    =================================
+
+    Instructions for adding Google Analytics 4 to Alpha Kids Math Explorer
+
+    1. Create a Google Analytics 4 property at https://analytics.google.com
+    2. Get your Measurement ID (format: G-XXXXXXXXXX)
+    3. Add the code below to ALL HTML files (index.html, launch.html, english.html, sinhala.html, contact.html)
+    4. Place it in the <head> section, before the closing </head> tag
+    5. Update the Content Security Policy (CSP) in .htaccess to allow Google Analytics
+-->
+
+<!-- Google Analytics 4 - ADD TO ALL HTML FILES -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    // Configure with privacy-friendly settings
+    gtag('config', 'G-XXXXXXXXXX', {
+        'anonymize_ip': true,              // Anonymize IP addresses (GDPR compliant)
+        'cookie_flags': 'SameSite=None;Secure',
+        'allow_google_signals': false,     // Disable advertising features
+        'allow_ad_personalization_signals': false
+    });
+
+    // Custom event tracking for educational content
+    function trackGameStart(gameName, language) {
+        gtag('event', 'game_start', {
+            'game_name': gameName,
+            'language': language,
+            'category': 'engagement'
+        });
+    }
+
+    function trackGameComplete(gameName, language, score) {
+        gtag('event', 'game_complete', {
+            'game_name': gameName,
+            'language': language,
+            'score': score,
+            'category': 'achievement'
+        });
+    }
+
+    function trackLanguageSelect(language) {
+        gtag('event', 'language_select', {
+            'language': language,
+            'category': 'navigation'
+        });
+    }
+
+    // Track PWA installation
+    window.addEventListener('appinstalled', () => {
+        gtag('event', 'pwa_install', {
+            'category': 'engagement'
+        });
+    });
+
+    // Track page performance
+    window.addEventListener('load', function () {
+        const perfData = window.performance.timing;
+        const pageLoadTime = perfData.loadEventEnd - perfData.navigationStart;
+
+        gtag('event', 'timing_complete', {
+            'name': 'page_load',
+            'value': pageLoadTime,
+            'category': 'performance'
+        });
+    });
+</script>
+
+<!--
+    ALTERNATIVE: Google Tag Manager (More flexible, recommended for commercial)
+    ===========================================================================
+
+    1. Create account at https://tagmanager.google.com
+    2. Replace GTM-XXXXXXX with your Container ID
+    3. Add HEAD code below to <head> of all HTML files
+    4. Add BODY code below to <body> (right after opening tag) of all HTML files
+-->
+
+<!-- Google Tag Manager - HEAD CODE -->
+<script>
+    (function (w, d, s, l, i) {
+        w[l] = w[l] || []; w[l].push({
+            'gtm.start':
+                new Date().getTime(), event: 'gtm.js'
+        }); var f = d.getElementsByTagName(s)[0],
+            j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
+                'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+    })(window, document, 'script', 'dataLayer', 'GTM-XXXXXXX');
+</script>
+<!-- End Google Tag Manager - HEAD -->
+
+<!-- Google Tag Manager (noscript) - BODY CODE -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-XXXXXXX" height="0" width="0"
+        style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) - BODY -->
+
+<!--
+    UPDATE .htaccess CSP HEADER
+    ===========================
+
+    Find the Content-Security-Policy line in .htaccess and update to:
+
+    Header set Content-Security-Policy "default-src 'self'; script-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://www.googletagmanager.com https://www.google-analytics.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https: https://www.google-analytics.com https://www.googletagmanager.com; connect-src 'self' https://www.google-analytics.com https://www.googletagmanager.com; frame-src 'self' https://www.googletagmanager.com;"
+-->
+
+<!--
+    PRIVACY-FRIENDLY ANALYTICS ALTERNATIVE: Plausible
+    =================================================
+
+    For GDPR/COPPA compliant analytics without cookies:
+
+    1. Sign up at https://plausible.io
+    2. Add domain: alphakids.lk
+    3. Add this code to <head> of all HTML files:
+-->
+
+<script defer data-domain="alphakids.lk" src="https://plausible.io/js/script.js"></script>
+
+<!--
+    KEY METRICS TO TRACK FOR COMMERCIAL SUCCESS:
+    ============================================
+
+    1. User Engagement:
+       - Language selection (English vs Sinhala)
+       - Games played
+       - Session duration
+       - Return visitors
+
+    2. Performance:
+       - Page load time
+       - Time to interactive
+       - Error rates
+       - Device types (mobile vs desktop)
+
+    3. Geographic Data:
+       - Countries accessing the app
+       - Cities (especially in Sri Lanka)
+       - Language preferences by region
+
+    4. Conversion Goals:
+       - PWA installations
+       - Contact form submissions
+       - Game completions
+       - Sticker achievements
+
+    5. Technical Metrics:
+       - Browser types
+       - Screen resolutions
+       - Network speed (via performance timing)
+       - Offline usage
+-->
+
+<!--
+    ERROR TRACKING: Sentry.io (Recommended)
+    ========================================
+
+    For real-time error monitoring:
+
+    1. Sign up at https://sentry.io
+    2. Create project for JavaScript
+    3. Get DSN key
+    4. Add this code to <head> of all HTML files:
+-->
+
+<script src="https://browser.sentry-cdn.com/7.x.x/bundle.min.js"
+    integrity="sha384-XXXXXXXXXXXXX" crossorigin="anonymous"></script>
+<script>
+    Sentry.init({
+        dsn: 'https://xxxxx@xxxxx.ingest.sentry.io/xxxxx',
+        integrations: [
+            new Sentry.BrowserTracing(),
+            new Sentry.Replay({
+                maskAllText: true,  // Privacy-friendly
+                blockAllMedia: true
+            })
+        ],
+        tracesSampleRate: 0.1,  // 10% of transactions
+        replaysSessionSampleRate: 0.1,
+        replaysOnErrorSampleRate: 1.0,
+        environment: 'production',
+        beforeSend(event) {
+            // Filter out personal information
+            if (event.user) {
+                delete event.user.email;
+                delete event.user.username;
+            }
+            return event;
+        }
+    });
+</script>
+
+<!--
+    COMMERCIAL FEATURES TO ADD:
+    ==========================
+
+    1. Hotjar - User behavior analytics
+       - Heatmaps showing where kids click
+       - Session recordings (with parental consent)
+       - Feedback polls
+       URL: https://www.hotjar.com
+
+    2. Facebook Pixel (for marketing)
+       - Track conversions from social media
+       - Build audience for ads
+       - Retargeting campaigns
+
+    3. Email Marketing Integration
+       - Mailchimp or SendGrid
+       - Parent newsletter signup
+       - Educational tips and updates
+
+    4. Stripe/PayPal (if offering premium features)
+       - Donation system
+       - Premium content unlock
+       - School/institution licenses
+-->
+
+<!--
+    DEPLOYMENT CHECKLIST:
+    ====================
+
+    [ ] Replace G-XXXXXXXXXX with actual Google Analytics ID
+    [ ] Add analytics code to all HTML files
+    [ ] Update CSP headers in .htaccess
+    [ ] Test analytics in Google Analytics dashboard
+    [ ] Set up custom events for game interactions
+    [ ] Configure conversion goals
+    [ ] Add Sentry error tracking
+    [ ] Test on mobile devices
+    [ ] Verify COPPA/GDPR compliance
+    [ ] Add cookie consent banner (if using cookies)
+    [ ] Document analytics in privacy policy
+-->

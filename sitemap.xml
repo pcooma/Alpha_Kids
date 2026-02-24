@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Alpha Kids Math Explorer - Sitemap
+  Last Updated: 2026-02-24
+  Description: Bilingual educational math app for children aged 3-6 (Age 3, Age 4, Ages 5-6)
+  All URLs reflect actual page filenames in the multi-age combined website.
+-->
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+
+  <!-- ============================= -->
+  <!-- Homepage / Age Selection Root -->
+  <!-- ============================= -->
+  <url>
+    <loc>https://alphakids.lk/</loc>
+    <lastmod>2026-02-24</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://alphakids.lk/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://alphakids.lk/english-5yr.html"/>
+    <xhtml:link rel="alternate" hreflang="si" href="https://alphakids.lk/sinhala-5yr.html"/>
+    <image:image>
+      <image:loc>https://alphakids.lk/assets/splash.png</image:loc>
+      <image:title>Alpha Kids Math Explorer</image:title>
+      <image:caption>Free bilingual math learning app for children aged 3-6</image:caption>
+    </image:image>
+  </url>
+
+  <!-- ================================ -->
+  <!-- Age 3 - Language Selection Pages -->
+  <!-- ================================ -->
+  <url>
+    <loc>https://alphakids.lk/launch-3yr.html</loc>
+    <lastmod>2026-02-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.90</priority>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://alphakids.lk/launch-3yr.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://alphakids.lk/english-3yr.html"/>
+    <xhtml:link rel="alternate" hreflang="si" href="https://alphakids.lk/sinhala-3yr.html"/>
+    <xhtml:link rel="alternate" hreflang="si-LK" href="https://alphakids.lk/sinhala-3yr.html"/>
+  </url>
+
+  <!-- Age 3 - English Game -->
+  <url>
+    <loc>https://alphakids.lk/english-3yr.html</loc>
+    <lastmod>2026-02-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://alphakids.lk/launch-3yr.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://alphakids.lk/english-3yr.html"/>
+    <xhtml:link rel="alternate" hreflang="si" href="https://alphakids.lk/sinhala-3yr.html"/>
+  </url>
+
+  <!-- Age 3 - Sinhala Game -->
+  <url>
+    <loc>https://alphakids.lk/sinhala-3yr.html</loc>
+    <lastmod>2026-02-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://alphakids.lk/launch-3yr.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://alphakids.lk/english-3yr.html"/>
+    <xhtml:link rel="alternate" hreflang="si" href="https://alphakids.lk/sinhala-3yr.html"/>
+    <xhtml:link rel="alternate" hreflang="si-LK" href="https://alphakids.lk/sinhala-3yr.html"/>
+  </url>
+
+  <!-- ================================ -->
+  <!-- Age 4 - Language Selection Pages -->
+  <!-- ================================ -->
+  <url>
+    <loc>https://alphakids.lk/launch-4yr.html</loc>
+    <lastmod>2026-02-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.90</priority>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://alphakids.lk/launch-4yr.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://alphakids.lk/english-4yr.html"/>
+    <xhtml:link rel="alternate" hreflang="si" href="https://alphakids.lk/sinhala-4yr.html"/>
+    <xhtml:link rel="alternate" hreflang="si-LK" href="https://alphakids.lk/sinhala-4yr.html"/>
+  </url>
+
+  <!-- Age 4 - English Game -->
+  <url>
+    <loc>https://alphakids.lk/english-4yr.html</loc>
+    <lastmod>2026-02-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://alphakids.lk/launch-4yr.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://alphakids.lk/english-4yr.html"/>
+    <xhtml:link rel="alternate" hreflang="si" href="https://alphakids.lk/sinhala-4yr.html"/>
+  </url>
+
+  <!-- Age 4 - Sinhala Game -->
+  <url>
+    <loc>https://alphakids.lk/sinhala-4yr.html</loc>
+    <lastmod>2026-02-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://alphakids.lk/launch-4yr.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://alphakids.lk/english-4yr.html"/>
+    <xhtml:link rel="alternate" hreflang="si" href="https://alphakids.lk/sinhala-4yr.html"/>
+    <xhtml:link rel="alternate" hreflang="si-LK" href="https://alphakids.lk/sinhala-4yr.html"/>
+  </url>
+
+  <!-- ====================================== -->
+  <!-- Ages 5-6 - Language Selection + Games  -->
+  <!-- ====================================== -->
+  <url>
+    <loc>https://alphakids.lk/launch-5yr.html</loc>
+    <lastmod>2026-02-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.90</priority>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://alphakids.lk/launch-5yr.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://alphakids.lk/english-5yr.html"/>
+    <xhtml:link rel="alternate" hreflang="si" href="https://alphakids.lk/sinhala-5yr.html"/>
+    <xhtml:link rel="alternate" hreflang="en-US" href="https://alphakids.lk/english-5yr.html"/>
+    <xhtml:link rel="alternate" hreflang="en-GB" href="https://alphakids.lk/english-5yr.html"/>
+    <xhtml:link rel="alternate" hreflang="en-AU" href="https://alphakids.lk/english-5yr.html"/>
+    <xhtml:link rel="alternate" hreflang="en-CA" href="https://alphakids.lk/english-5yr.html"/>
+    <xhtml:link rel="alternate" hreflang="en-IN" href="https://alphakids.lk/english-5yr.html"/>
+    <xhtml:link rel="alternate" hreflang="en-ZA" href="https://alphakids.lk/english-5yr.html"/>
+    <xhtml:link rel="alternate" hreflang="en-NZ" href="https://alphakids.lk/english-5yr.html"/>
+    <xhtml:link rel="alternate" hreflang="si-LK" href="https://alphakids.lk/sinhala-5yr.html"/>
+    <image:image>
+      <image:loc>https://alphakids.lk/assets/splash.png</image:loc>
+      <image:title>Alpha Kids Math Explorer Ages 5-6</image:title>
+      <image:caption>Bilingual educational app for children aged 5-6 — 15+ interactive games</image:caption>
+    </image:image>
+  </url>
+
+  <!-- Ages 5-6 - English Game -->
+  <url>
+    <loc>https://alphakids.lk/english-5yr.html</loc>
+    <lastmod>2026-02-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.88</priority>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://alphakids.lk/launch-5yr.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://alphakids.lk/english-5yr.html"/>
+    <xhtml:link rel="alternate" hreflang="si" href="https://alphakids.lk/sinhala-5yr.html"/>
+    <xhtml:link rel="alternate" hreflang="en-US" href="https://alphakids.lk/english-5yr.html"/>
+    <xhtml:link rel="alternate" hreflang="en-GB" href="https://alphakids.lk/english-5yr.html"/>
+    <xhtml:link rel="alternate" hreflang="en-AU" href="https://alphakids.lk/english-5yr.html"/>
+    <xhtml:link rel="alternate" hreflang="en-CA" href="https://alphakids.lk/english-5yr.html"/>
+    <xhtml:link rel="alternate" hreflang="en-IN" href="https://alphakids.lk/english-5yr.html"/>
+    <xhtml:link rel="alternate" hreflang="en-ZA" href="https://alphakids.lk/english-5yr.html"/>
+    <xhtml:link rel="alternate" hreflang="en-NZ" href="https://alphakids.lk/english-5yr.html"/>
+    <xhtml:link rel="alternate" hreflang="si-LK" href="https://alphakids.lk/sinhala-5yr.html"/>
+  </url>
+
+  <!-- Ages 5-6 - Sinhala Game -->
+  <url>
+    <loc>https://alphakids.lk/sinhala-5yr.html</loc>
+    <lastmod>2026-02-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.88</priority>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://alphakids.lk/launch-5yr.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://alphakids.lk/english-5yr.html"/>
+    <xhtml:link rel="alternate" hreflang="si" href="https://alphakids.lk/sinhala-5yr.html"/>
+    <xhtml:link rel="alternate" hreflang="en-US" href="https://alphakids.lk/english-5yr.html"/>
+    <xhtml:link rel="alternate" hreflang="en-GB" href="https://alphakids.lk/english-5yr.html"/>
+    <xhtml:link rel="alternate" hreflang="en-AU" href="https://alphakids.lk/english-5yr.html"/>
+    <xhtml:link rel="alternate" hreflang="en-CA" href="https://alphakids.lk/english-5yr.html"/>
+    <xhtml:link rel="alternate" hreflang="en-IN" href="https://alphakids.lk/english-5yr.html"/>
+    <xhtml:link rel="alternate" hreflang="en-ZA" href="https://alphakids.lk/english-5yr.html"/>
+    <xhtml:link rel="alternate" hreflang="en-NZ" href="https://alphakids.lk/english-5yr.html"/>
+    <xhtml:link rel="alternate" hreflang="si-LK" href="https://alphakids.lk/sinhala-5yr.html"/>
+  </url>
+
+  <!-- ======================= -->
+  <!-- Support / Legal Pages   -->
+  <!-- ======================= -->
+
+  <!-- Contact & Support Page -->
+  <url>
+    <loc>https://alphakids.lk/contact.html</loc>
+    <lastmod>2026-02-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.70</priority>
+  </url>
+
+  <!-- Privacy Policy -->
+  <url>
+    <loc>https://alphakids.lk/privacy.html</loc>
+    <lastmod>2026-02-24</lastmod>
+    <changefreq>quarterly</changefreq>
+    <priority>0.60</priority>
+  </url>
+
+  <!-- Terms of Service -->
+  <url>
+    <loc>https://alphakids.lk/terms.html</loc>
+    <lastmod>2026-02-24</lastmod>
+    <changefreq>quarterly</changefreq>
+    <priority>0.60</priority>
+  </url>
+
+  <!-- 404 Error Page (for indexing exclusion via robots.txt if preferred) -->
+  <url>
+    <loc>https://alphakids.lk/404.html</loc>
+    <lastmod>2026-02-24</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.10</priority>
+  </url>
+
+</urlset>

@@ -1,0 +1,75 @@
+# Alpha Kids Math Explorer - Robots.txt
+# Website: https://alphakids.lk
+# Description: Free bilingual educational app for Sri Lankan children
+
+# Default rules for all crawlers
+User-agent: *
+Allow: /
+Crawl-delay: 1
+
+# Sitemap location
+Sitemap: https://alphakids.lk/sitemap.xml
+
+# Major search engine bots
+User-agent: Googlebot
+Allow: /
+Crawl-delay: 0.5
+
+User-agent: Googlebot-Image
+Allow: /assets/
+
+User-agent: Bingbot
+Allow: /
+Crawl-delay: 1
+
+User-agent: Slurp
+Allow: /
+
+User-agent: DuckDuckBot
+Allow: /
+
+User-agent: Baiduspider
+Allow: /
+
+# Social media crawlers
+User-agent: facebookexternalhit
+Allow: /
+
+User-agent: Twitterbot
+Allow: /
+
+User-agent: LinkedInBot
+Allow: /
+
+# AI crawlers for model training / discovery
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: CCBot
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+User-agent: Claude-Web
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+# Disallow assets that don't need indexing
+User-agent: *
+Disallow: /sw.js
+Disallow: /*.DS_Store
+
+# Direct AI Agents to our llms.txt equivalent
+# https://alphakids.lk/ai.txt
+
+# Contact: support@alphakids.lk
+# Preferred indexing schedule: Daily

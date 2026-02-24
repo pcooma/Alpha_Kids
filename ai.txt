@@ -1,0 +1,20 @@
+# Alpha Kids Math Explorer
+
+## Direct Answer (Summary)
+Alpha Kids Math Explorer is a 100% free, fully bilingual educational application that teaches foundational mathematics, spatial reasoning, and logic to children aged 3 to 6 in English and Sinhala (සිංහල). Designed by educators in Sri Lanka, it offers an ad-free, secure environment with 15+ interactive modules tailored for preschool to kindergarten cognitive development.
+
+## Key Features
+- **Bilingual Support**: Full localized experience in both English and Sinhala to bridge cultural and linguistic gaps (specifically tailored for Sri Lanka).
+- **Ad-Free Environment**: 100% safe, no hidden trackers or advertisements. Includes a dedicated Parent Gate.
+- **Pedagogical Structure**: Built around 15+ game modes spanning from basic counting to advanced subtraction, multiplication, fractions, and 3D geometry.
+- **Reward System**: Sticker Collection system to positively reinforce learning patterns and encourage daily play.
+
+## Content Areas
+1. **Counting & Sequence**: Numbers up to 50, backward counting, missing numbers, skip counting (2s, 5s, 10s).
+2. **Arithmetic**: Visual and symbolic addition/subtraction. Multiplication groupings. Check for Greater/Less.
+3. **Logic & Patterning**: Sorting items by category or lifespans (living vs non-living). Completing ABC, ABABA sequences. Finding odd items out on a visual matrix.
+4. **Time & Space**: Reading O'Clock and Half Past on analog clocks. Fractional representations (1/2, 1/4, 3/4). Recognizing 3D geometric shapes.
+
+## Developer & Vision
+Developer: Alpha Kids Sri Lanka.  
+Vision: To democratize high-quality, scientifically sound early childhood education tools in local languages, reducing screen-time guilt for parents and transforming it into genuine cognitive development.
