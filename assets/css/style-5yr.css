@@ -49,6 +49,8 @@
     box-sizing: border-box;
     -webkit-tap-highlight-color: transparent;
     user-select: none;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
 }
 
 body {

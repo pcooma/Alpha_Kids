@@ -207,7 +207,7 @@ Open `index.html` in browser and verify all games still work after minification
 - **Changes Made:** See `IMPROVEMENTS_APPLIED_2026-02-23.md`
 
 ### Emergency Contacts
-- **Email:** support@alphakids.lk
+- **Email:** alphakids.lk@gmail.com
 - **Documentation:** All in project root directory
 
 ---

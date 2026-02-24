@@ -421,7 +421,7 @@ echo "Deployed to production at $(date)"
 ## 📞 Support
 
 For deployment issues or questions:
-- **Email:** support@alphakids.lk
+- **Email:** alphakids.lk@gmail.com
 - **Documentation:** [README.md](README.md)
 - **Issues:** Report bugs and feature requests
 

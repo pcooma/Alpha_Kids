@@ -37,7 +37,7 @@ Last Updated: February 23, 2026
 - [ ] **Domain Setup** - Configure DNS
   - Point alphakids.lk to your server IP
   - Set up www subdomain
-  - Configure email (support@alphakids.lk)
+  - Configure email (alphakids.lk@gmail.com)
 
 - [ ] **Google Analytics** - Add tracking code
   - Create GA4 property

@@ -131,7 +131,7 @@ See [COMMERCIAL_DEPLOYMENT_GUIDE.md](COMMERCIAL_DEPLOYMENT_GUIDE.md) for details
 - Original deployment: [DEPLOYMENT.md](DEPLOYMENT.md)
 
 **Contact:**
-- Email: support@alphakids.lk
+- Email: alphakids.lk@gmail.com
 - Twitter: @AlphaKidsLK
 
 ---

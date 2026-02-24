@@ -241,7 +241,7 @@ Users can install Alpha Kids directly from their browser:
 
 This is a proprietary project by **Alpha Kids Sri Lanka**. For inquiries:
 
-📧 **Email:** support@alphakids.lk
+📧 **Email:** alphakids.lk@gmail.com
 🐦 **Twitter:** [@AlphaKidsLK](https://twitter.com/AlphaKidsLK)
 🌐 **Website:** [https://alphakids.lk](https://alphakids.lk)
 

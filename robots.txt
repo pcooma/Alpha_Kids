@@ -71,5 +71,5 @@ Disallow: /*.DS_Store
 # Direct AI Agents to our llms.txt equivalent
 # https://alphakids.lk/ai.txt
 
-# Contact: support@alphakids.lk
+# Contact: alphakids.lk@gmail.com
 # Preferred indexing schedule: Daily
