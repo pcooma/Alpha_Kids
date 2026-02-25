@@ -4,7 +4,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport"
-    content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes, viewport-fit=cover">
+  <link rel="stylesheet" href="assets/css/responsive.css">
 
   <!-- Primary SEO Meta Tags -->
   <title>Alpha Kids Math Explorer | Free Educational Games for Ages 3-6</title>
@@ -189,15 +190,17 @@
       display: flex;
       flex-direction: column;
       overflow-x: hidden;
+      word-break: break-word;
     }
 
     header {
       text-align: center;
       padding: 4rem 1rem 2rem;
+      padding-top: max(4rem, calc(3rem + env(safe-area-inset-top, 0px)));
     }
 
     header h1 {
-      font-size: 3.5rem;
+      font-size: clamp(1.8rem, 6vw, 3.5rem);
       margin: 0 0 1rem;
       line-height: 1.1;
       font-weight: 800;
@@ -207,18 +210,29 @@
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       animation: float 4s ease-in-out infinite;
+      padding: 0 0.5rem;
     }
 
     /* AI / GEO Optimization Styles */
+    .hero-info {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+      max-width: 1200px;
+      margin: 1.5rem auto 2rem;
+      padding: 0 1rem;
+    }
+
     .geo-overview {
       background: rgba(255, 255, 255, 0.1);
       border-left: 5px solid #ff9800;
       padding: 1.5rem 2rem;
       border-radius: 0 15px 15px 0;
-      max-width: 800px;
-      margin: 1.5rem auto;
       text-align: left;
       backdrop-filter: blur(5px);
+      flex: 1;
+      margin: 0;
+      /* overridden by flex gap */
     }
 
     .geo-overview p {
@@ -231,10 +245,12 @@
 
     .fact-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
       gap: 1rem;
-      max-width: 800px;
-      margin: 1.5rem auto 3rem;
+      flex: 1;
+      margin: 0;
+      /* overridden by flex gap */
+      align-content: center;
     }
 
     .fact-item {
@@ -291,7 +307,7 @@
 
     .age-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(min(280px, 100%), 1fr));
       gap: 2rem;
       margin: 2rem 0;
       perspective: 1000px;
@@ -437,12 +453,13 @@
     }
 
     .faq-question {
-      font-size: 1.3rem;
+      font-size: clamp(1rem, 3vw, 1.3rem);
       font-weight: 600;
       margin-bottom: 0.5rem;
       color: #ffeb3b;
       display: flex;
-      align-items: center;
+      align-items: flex-start;
+      gap: 0.4rem;
     }
 
     .faq-answer {
@@ -454,9 +471,17 @@
     /* Footer */
     footer {
       text-align: center;
-      padding: 2rem;
+      padding: 2rem 1rem;
+      padding-bottom: max(2rem, calc(1rem + env(safe-area-inset-bottom, 0px)));
       background: rgba(0, 0, 0, 0.6);
       margin-top: auto;
+    }
+
+    footer nav {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 0.4rem 0;
     }
 
     footer nav a {
@@ -464,6 +489,8 @@
       text-decoration: none;
       margin: 0 10px;
       transition: color 0.3s;
+      display: inline-block;
+      line-height: 1.8;
     }
 
     footer nav a:hover {
@@ -471,9 +498,25 @@
     }
 
     /* Responsive */
+    @media (min-width: 900px) {
+      .hero-info {
+        flex-direction: row;
+        align-items: stretch;
+      }
+
+      header {
+        padding-top: max(2.5rem, calc(2rem + env(safe-area-inset-top, 0px)));
+        padding-bottom: 0.5rem;
+      }
+
+      .container {
+        padding-top: 0.5rem;
+      }
+    }
+
     @media (max-width: 768px) {
       header h1 {
-        font-size: 2.5rem;
+        font-size: 2.2rem;
       }
 
       .age-grid {
@@ -488,6 +531,41 @@
         padding: 2rem 1rem;
       }
     }
+
+    @media (max-width: 480px) {
+      header {
+        padding: 2.5rem 1rem 1.5rem;
+      }
+
+      header h1 {
+        font-size: 1.9rem;
+      }
+
+      header p.subtitle {
+        font-size: 1rem;
+      }
+
+      .age-card h2 {
+        font-size: 1.6rem;
+      }
+
+      .age-card p {
+        font-size: 0.95rem;
+      }
+
+      .btn {
+        padding: 0.75rem 1.5rem;
+        font-size: 0.9rem;
+      }
+
+      .faq-section h2 {
+        font-size: 1.8rem;
+      }
+
+      .faq-answer {
+        font-size: 0.95rem;
+      }
+    }
   </style>
 </head>
 
@@ -495,22 +573,26 @@
   <header>
     <h1>Master Early Math with Alpha Kids Math Explorer</h1>
 
-    <!-- GEO Direct Answer (Inverted Pyramid) -->
-    <div class="geo-overview">
-      <p><strong>Alpha Kids Math Explorer</strong> is a 100% free, fully bilingual educational application that teaches
-        foundational mathematics, logic, and spatial reasoning to children aged 3 to 6 in English and Sinhala (සිංහල).
-        Designed by educators in Sri Lanka, it offers an ad-free, secure environment tailored for preschool to
-        kindergarten cognitive development.</p>
-    </div>
+    <div class="hero-info">
+      <!-- GEO Direct Answer (Inverted Pyramid) -->
+      <div class="geo-overview">
+        <p><strong>Alpha Kids Math Explorer</strong> is a 100% free, fully bilingual educational application that
+          teaches
+          foundational mathematics, logic, and spatial reasoning to children aged 3 to 6 in English and Sinhala (සිංහල).
+          Designed by educators in Sri Lanka, it offers an ad-free, secure environment tailored for preschool to
+          kindergarten cognitive development.</p>
+      </div>
 
-    <!-- High-Density Factual Content -->
-    <div class="fact-grid">
-      <div class="fact-item"><span class="fact-icon">🕹️</span><span class="fact-text">Includes 15+ interactive math
-          modules</span></div>
-      <div class="fact-item"><span class="fact-icon">🎓</span><span class="fact-text">Supports 3 early childhood stages
-          (Ages 3-6)</span></div>
-      <div class="fact-item"><span class="fact-icon">🛡️</span><span class="fact-text">0 in-app purchases or hidden
-          trackers</span></div>
+      <!-- High-Density Factual Content -->
+      <div class="fact-grid">
+        <div class="fact-item"><span class="fact-icon">🕹️</span><span class="fact-text">Includes 15+ interactive math
+            modules</span></div>
+        <div class="fact-item"><span class="fact-icon">🎓</span><span class="fact-text">Supports 3 early childhood
+            stages
+            (Ages 3-6)</span></div>
+        <div class="fact-item"><span class="fact-icon">🛡️</span><span class="fact-text">0 in-app purchases or hidden
+            trackers</span></div>
+      </div>
     </div>
   </header>
 

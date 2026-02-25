@@ -4,7 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport"
-        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+        content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes, viewport-fit=cover">
+    <link rel="stylesheet" href="assets/css/responsive.css">
     <title>Alpha Kids ගණිත ගවේෂක (වයස 4+) - සිංහල | නොමිලේ ගණිත ක්‍රීඩා</title>
     <meta name="description"
         content="Alpha Kids ගණිත ගවේෂක – වයස 4+ දරුවන් සඳහා සිංහල ගණිත ඉගෙනුම් ක්‍රීඩා. මතකය, ප‍ùz‍le, ගණිත ක්‍රීඩා. නොමිලේ, දැන්වීම් රහිත, ආරක්ෂිත.">
@@ -105,8 +106,8 @@
         }
 
         #app {
-            padding-top: 44px;
-            padding-bottom: 40px;
+            padding-top: max(50px, calc(44px + env(safe-area-inset-top, 0px)));
+            padding-bottom: max(50px, calc(40px + env(safe-area-inset-bottom, 0px)));
         }
     </style>
 </head>
@@ -149,7 +150,7 @@
 
     <!-- Footer Navigation -->
     <footer
-        style="position:fixed;bottom:0;left:0;width:100%;text-align:center;padding:0.4rem;background:rgba(255,255,255,0.92);font-size:0.8rem;z-index:50;border-top:1px solid #ddd;color:#333;">
+        style="position:fixed;bottom:0;left:0;width:100%;text-align:center;padding:0.4rem 0.4rem max(0.4rem, env(safe-area-inset-bottom, 0.4rem));background:rgba(255,255,255,0.95);font-size:0.8rem;z-index:50;border-top:1px solid #ddd;color:#333;">
         <a href="privacy.html" style="color:#555;text-decoration:none;margin:0 0.4rem;">Privacy</a> |
         <a href="terms.html" style="color:#555;text-decoration:none;margin:0 0.4rem;">Terms</a> |
         <a href="contact.html" style="color:#555;text-decoration:none;margin:0 0.4rem;">Contact</a>

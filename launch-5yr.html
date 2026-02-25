@@ -4,7 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport"
-        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+        content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes, viewport-fit=cover">
+    <link rel="stylesheet" href="assets/css/responsive.css">
 
     <!-- Primary SEO Meta Tags -->
     <title>Alpha Kids Math Explorer (Age 5+) | Bilingual English & Sinhala</title>
@@ -134,22 +135,39 @@
     <style>
         body {
             display: flex;
+            flex-direction: column;
             align-items: center;
-            justify-content: center;
+            justify-content: flex-start;
+            width: 100%;
+            min-height: 100dvh;
+            min-height: 100vh;
+            /* fallback */
             background: radial-gradient(circle at center, #FFEBEE, #FFCDD2);
-            /* Soft inviting background */
+            overflow-y: auto;
+            box-sizing: border-box;
+            padding: env(safe-area-inset-top, 0.5rem) env(safe-area-inset-right, 1rem) env(safe-area-inset-bottom, 1rem) env(safe-area-inset-left, 1rem);
+        }
+
+        main {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            width: 100%;
+            flex: 1;
+            padding: 2rem 0;
         }
 
         .lang-card {
             background: white;
-            padding: 4vmin;
+            padding: clamp(2vmin, 4vmin, 5vmin);
             border-radius: 4vmin;
             box-shadow: 0 2vmin 5vmin rgba(0, 0, 0, 0.2);
             text-align: center;
-            max-width: 80vmin;
-            width: 90%;
+            max-width: min(500px, 92%);
+            width: 92%;
             border: 1vmin solid #FFCA28;
-            /* Friendly yellow border */
+            margin: auto 0;
         }
 
         .main-logo {
@@ -318,11 +336,18 @@
         </div>
     </main>
 
-    <footer style="text-align:center;margin-top:1.5rem;font-size:0.85rem;color:rgba(255,255,255,0.6);">
-        <a href="index.html" style="color:rgba(255,255,255,0.7);text-decoration:none;margin:0 0.5rem;">🏠 Home</a> |
-        <a href="privacy.html" style="color:rgba(255,255,255,0.7);text-decoration:none;margin:0 0.5rem;">Privacy</a> |
-        <a href="terms.html" style="color:rgba(255,255,255,0.7);text-decoration:none;margin:0 0.5rem;">Terms</a> |
-        <a href="contact.html" style="color:rgba(255,255,255,0.7);text-decoration:none;margin:0 0.5rem;">Contact</a>
+    <footer
+        style="text-align:center;margin-top:1.5rem;font-size:0.85rem;color:rgba(0,0,0,0.5);padding:0.5rem;padding-bottom: max(0.5rem, env(safe-area-inset-bottom, 0.5rem));">
+        <a href="index.html"
+            style="color:#8e24aa;text-decoration:none;margin:0 0.5rem;display:inline-block;line-height:1.8;">🏠 Home</a>
+        |
+        <a href="privacy.html"
+            style="color:#8e24aa;text-decoration:none;margin:0 0.5rem;display:inline-block;line-height:1.8;">Privacy</a>
+        |
+        <a href="terms.html"
+            style="color:#8e24aa;text-decoration:none;margin:0 0.5rem;display:inline-block;line-height:1.8;">Terms</a> |
+        <a href="contact.html"
+            style="color:#8e24aa;text-decoration:none;margin:0 0.5rem;display:inline-block;line-height:1.8;">Contact</a>
     </footer>
 
     <!-- Service Worker Registration for PWA -->

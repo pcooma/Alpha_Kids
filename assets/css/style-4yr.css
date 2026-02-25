@@ -1,0 +1,1875 @@
+:root {
+    /* Glossy Game Palette (Lucas & Friends Style) */
+
+    /* Background */
+    --color-bg-wood: #5D4037;
+    --color-bg-table: radial-gradient(circle at center, #8D6E63 0%, #4E342E 100%);
+
+    /* Panels */
+    --color-panel-bg: #FFFFFF;
+    --color-panel-border: #00BCD4;
+    /* Cyan/Teal border */
+    --panel-border-width: 6px;
+    --panel-radius: 24px;
+    --shadow-panel: 0 10px 20px rgba(0, 0, 0, 0.3);
+
+    /* Glossy Tile Colors */
+    --tile-red: linear-gradient(to bottom, #FF8A80, #D32F2F);
+    --tile-red-shadow: #B71C1C;
+
+    --tile-green: linear-gradient(to bottom, #B9F6CA, #00C853);
+    --tile-green-shadow: #1B5E20;
+
+    --tile-blue: linear-gradient(to bottom, #80D8FF, #0091EA);
+    --tile-blue-shadow: #01579B;
+
+    --tile-orange: linear-gradient(to bottom, #FFD180, #FF6D00);
+    --tile-orange-shadow: #E65100;
+
+    /* Text */
+    --color-text-main: #3E2723;
+    /* Dark Brown */
+    --font-main: 'Outfit', 'Noto Sans Sinhala', 'Segoe UI', 'San Francisco', -apple-system, BlinkMacSystemFont, 'Roboto', sans-serif;
+    --font-sinhala: 'Noto Sans Sinhala', sans-serif;
+    --font-hand: 'Bubblegum Sans', cursive;
+
+    /* Missing Var Fallback */
+    --color-bg-page: #FFF8E1;
+    /* Light cream */
+}
+
+* {
+    box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent;
+    user-select: none;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: var(--font-main);
+    background: url('../wallpaper_space.png') no-repeat center center fixed;
+    background-size: cover;
+    color: var(--color-text-main);
+    overflow: hidden;
+    height: 100vh;
+    width: 100vw;
+}
+
+/* Base Classes */
+.full-screen {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.flex-center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.column {
+    flex-direction: column;
+}
+
+/* Confetti */
+.confetti {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background: #f00;
+    top: -50px;
+    animation: rain 3s linear forwards;
+    z-index: 101;
+}
+
+.confetti-particle {
+    position: absolute;
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    z-index: 999;
+    pointer-events: none;
+}
+
+@keyframes rain {
+    to {
+        transform: translateY(110vh) rotate(720deg);
+    }
+}
+
+@keyframes fall {
+    to {
+        transform: translateY(100vh) rotate(720deg);
+        opacity: 0;
+    }
+}
+
+/* 1. Game Panel (The White Card) */
+.game-panel {
+    background: var(--color-panel-bg);
+    border: var(--panel-border-width) solid var(--color-panel-border);
+    border-radius: var(--panel-radius);
+    box-shadow: var(--shadow-panel);
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+/* 2. Glossy Button/Tile */
+.btn-tile {
+    border: none;
+    border-radius: 16px;
+    color: white;
+    font-weight: 900;
+    font-size: 2rem;
+    text-shadow: 0 2px 0 rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+    position: relative;
+    transition: transform 0.1s;
+    font-family: var(--font-main);
+
+    /* Default Blue */
+    background: var(--tile-blue);
+    box-shadow: 0 6px 0 var(--tile-blue-shadow), 0 10px 10px rgba(0, 0, 0, 0.2);
+}
+
+.btn-tile:active {
+    transform: translateY(6px);
+    box-shadow: 0 0 0 var(--tile-blue-shadow), inset 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+/* Variant Colors */
+.btn-tile.red {
+    background: var(--tile-red);
+    box-shadow: 0 6px 0 var(--tile-red-shadow);
+}
+
+.btn-tile.red:active {
+    box-shadow: 0 0 0 var(--tile-red-shadow);
+}
+
+.btn-tile.green {
+    background: var(--tile-green);
+    box-shadow: 0 6px 0 var(--tile-green-shadow);
+}
+
+.btn-tile.green:active {
+    box-shadow: 0 0 0 var(--tile-green-shadow);
+}
+
+.btn-tile.orange {
+    background: var(--tile-orange);
+    box-shadow: 0 6px 0 var(--tile-orange-shadow);
+}
+
+.btn-tile.orange:active {
+    box-shadow: 0 0 0 var(--tile-orange-shadow);
+}
+
+.btn-secondary {
+    background: #FF9800;
+    border: 3px solid #fff;
+    color: white;
+    font-size: 1.5rem;
+    padding: 10px 30px;
+    border-radius: 30px;
+    box-shadow: 0 5px 0 #E65100, 0 10px 10px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+    font-weight: bold;
+    transition: transform 0.1s;
+    font-family: var(--font-main);
+}
+
+.btn-secondary:active {
+    transform: translateY(5px);
+    box-shadow: 0 0 0 #E65100;
+}
+
+/* 3. Beads (Shiny Spheres) */
+.bead {
+    border-radius: 50%;
+    box-shadow: 2px 4px 5px rgba(0, 0, 0, 0.3);
+    position: relative;
+}
+
+.bead::after {
+    content: '';
+    position: absolute;
+    top: 15%;
+    left: 15%;
+    width: 30%;
+    height: 30%;
+    background: radial-gradient(white, transparent);
+    border-radius: 50%;
+    opacity: 0.8;
+}
+
+.bead.green {
+    background: radial-gradient(circle at 30% 30%, #66BB6A, #1B5E20);
+}
+
+.bead.red {
+    background: radial-gradient(circle at 30% 30%, #EF5350, #B71C1C);
+}
+
+.bead.yellow {
+    background: radial-gradient(circle at 30% 30%, #FFEE58, #F57F17);
+}
+
+/* Common UI */
+/* Mapping btn-core to match btn-tile style manually since CSS doesn't support @extend */
+.btn-core {
+    border: none;
+    border-radius: 16px;
+    color: white;
+    font-weight: 900;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    /* Explicit size */
+
+    /* Default Blue */
+    background: var(--tile-blue);
+    box-shadow: 0 6px 0 var(--tile-blue-shadow), 0 10px 10px rgba(0, 0, 0, 0.2);
+
+    cursor: pointer;
+    position: relative;
+    transition: transform 0.1s;
+    font-family: var(--font-main);
+}
+
+.btn-core:active {
+    transform: translateY(6px);
+    box-shadow: 0 0 0 var(--tile-blue-shadow), inset 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+/* --- NEW V2 STYLES (COMMERCIAL GRADE) --- */
+
+/* Top Navigation Bar */
+.top-bar {
+    position: absolute;
+    top: clamp(65px, 8vh, 90px);
+    /* Increased from 55px to 65px to prevent overlap with game-nav-bar */
+    left: 0;
+    width: 100%;
+    padding: clamp(8px, 1.5vmin, 15px) clamp(12px, 2.5vmin, 25px);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 100;
+    /* Below game-nav-bar (9999) but above game content */
+}
+
+.btn-nav {
+    background: rgba(255, 255, 255, 0.9);
+    border: clamp(2px, 0.4vmin, 3px) solid #eee;
+    border-radius: 50px;
+    /* Responsive Toddler Sizing */
+    padding: clamp(8px, 1.5vmin, 14px) clamp(12px, 2.5vmin, 25px);
+    font-size: clamp(1rem, 3.5vmin, 1.8rem);
+    font-weight: bold;
+    color: #5D4037;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    transition: transform 0.1s;
+    display: flex;
+    align-items: center;
+    gap: clamp(6px, 1vmin, 10px);
+    font-family: var(--font-hand);
+    min-height: clamp(44px, 8vmin, 70px);
+    touch-action: manipulation;
+    white-space: nowrap;
+}
+
+.btn-nav:active {
+    transform: scale(0.95);
+}
+
+.icon-lock {
+    font-size: 1.2rem;
+    opacity: 0.6;
+}
+
+/* Main Title Area */
+#app {
+    padding-top: 50px;
+    /* Increased from 44px to 50px for better spacing below game-nav-bar */
+    padding-bottom: 50px;
+    /* Increased from 40px to 50px for better spacing above fixed footer */
+}
+
+.title-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    z-index: 10;
+    margin-top: clamp(20px, 5vh, 60px);
+    margin-bottom: clamp(60px, 12vh, 120px);
+}
+
+.game-title {
+    font-size: clamp(1.8rem, 10vmin, 5rem);
+    color: #fff;
+    text-shadow: 0 5px 0 #3E2723, 0 10px 20px rgba(0, 0, 0, 0.4);
+    line-height: 1.1;
+    text-align: center;
+    margin-bottom: 30px;
+    transform: rotate(-3deg);
+    font-family: var(--font-hand);
+}
+
+.daily-adventure-card {
+    background: #fff;
+    border-radius: 30px;
+    padding: 20px 40px;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+    text-align: center;
+    cursor: pointer;
+    animation: gentle-float 4s infinite ease-in-out;
+    border: 6px solid #FFCA28;
+}
+
+.daily-adventure-card:active {
+    transform: scale(0.95);
+}
+
+.rocket-icon {
+    font-size: 6rem;
+    display: block;
+    margin-bottom: 10px;
+}
+
+.cta-text {
+    font-size: 2rem;
+    font-weight: 900;
+    color: #E65100;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-family: var(--font-main);
+}
+
+@keyframes gentle-float {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-15px);
+    }
+}
+
+/* Bottom Carousel Strip */
+.carousel-strip {
+    position: absolute;
+    bottom: clamp(45px, 6vh, 60px);
+    /* Increased from 15px to 45px to prevent overlap with fixed footer */
+    left: 0;
+    width: 100%;
+    height: clamp(70px, 15vmin, 110px);
+    background: rgba(255, 255, 255, 0.95);
+    border-top: 4px solid #4DB6AC;
+    display: flex;
+    align-items: center;
+    padding: 0 clamp(5px, 1vmin, 10px);
+    box-shadow: 0 -1.5vmin 4.5vmin rgba(0, 0, 0, 0.1);
+    z-index: 90;
+    /* Below top-bar (100) and game-nav-bar (9999), above game content */
+}
+
+.carousel-track {
+    flex: 1;
+    display: flex;
+    overflow-x: auto;
+    gap: 20px;
+    padding: 20px;
+    scroll-behavior: smooth;
+    -ms-overflow-style: none;
+    /* Hide scrollbar IE */
+    scrollbar-width: none;
+    /* Hide scrollbar Firefox */
+}
+
+.carousel-track::-webkit-scrollbar {
+    display: none;
+}
+
+.game-tile {
+    min-width: 140px;
+    height: 140px;
+    background: #fff;
+    border-radius: 25px;
+    box-shadow: 0 8px 0 rgba(0, 0, 0, 0.1), 0 10px 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+    cursor: pointer;
+    border: 3px solid #eee;
+    transition: transform 0.1s;
+}
+
+.game-tile:active {
+    transform: translateY(5px);
+    box-shadow: 0 3px 0 rgba(0, 0, 0, 0.1);
+}
+
+.game-tile.selected {
+    border-color: #FF9800;
+    transform: scale(1.05);
+}
+
+.tile-icon {
+    font-size: 3.5rem;
+    margin-bottom: 5px;
+}
+
+.tile-label {
+    font-size: 1rem;
+    font-weight: bold;
+    color: #5D4037;
+    text-align: center;
+    line-height: 1.1;
+    font-family: var(--font-hand);
+}
+
+/* Color Variants for Tiles */
+.tile-blue {
+    background: linear-gradient(135deg, #E3F2FD, #BBDEFB);
+    border-color: #2196F3;
+}
+
+.tile-green {
+    background: linear-gradient(135deg, #E8F5E9, #C8E6C9);
+    border-color: #4CAF50;
+}
+
+.tile-orange {
+    background: linear-gradient(135deg, #FFF3E0, #FFE0B2);
+    border-color: #FF9800;
+}
+
+.tile-purple {
+    background: linear-gradient(135deg, #F3E5F5, #E1BEE7);
+    border-color: #9C27B0;
+}
+
+.tile-red {
+    background: linear-gradient(135deg, #FFEBEE, #FFCDD2);
+    border-color: #F44336;
+}
+
+.carousel-arrow {
+    border-radius: 50%;
+    border: 3px solid #fff;
+    color: white;
+    font-size: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 0 4px 0 #AF6C00;
+    z-index: 95;
+    flex-shrink: 0;
+    transition: transform 0.1s;
+    /* Toddler Target Size */
+    width: 80px;
+    height: 80px;
+}
+
+.carousel-arrow:hover {
+    transform: scale(1.1);
+}
+
+.carousel-arrow:active {
+    transform: translateY(2px);
+    box-shadow: 0 2px 0 #AF6C00;
+}
+
+/* Parents Gate Overlay */
+.parents-gate {
+    background: rgba(0, 0, 0, 0.9);
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: white;
+}
+
+.gate-msg {
+    font-size: clamp(1rem, 4vmin, 2rem);
+    margin-bottom: 30px;
+    text-align: center;
+    font-family: var(--font-main);
+    padding: 0 1rem;
+}
+
+.gate-actions {
+    display: flex;
+    gap: 20px;
+}
+
+.gate-btn {
+    padding: clamp(8px, 2vmin, 15px) clamp(16px, 4vmin, 40px);
+    border-radius: 15px;
+    font-size: clamp(0.9rem, 3.5vmin, 1.5rem);
+    border: none;
+    cursor: pointer;
+    font-family: var(--font-main);
+}
+
+.btn-cancel {
+    background: #555;
+    color: #fff;
+}
+
+.btn-confirm {
+    background: #4CAF50;
+    color: #fff;
+}
+
+/* Hold Gate Specifics */
+.gate-actions.column {
+    flex-direction: column;
+    align-items: center;
+}
+
+.btn-giant {
+    font-size: clamp(1.2rem, 4vmin, 2.5rem);
+    padding: clamp(0.8rem, 3vmin, 1.8rem) clamp(1.5rem, 5vmin, 3.5rem);
+    border-radius: 25px;
+    background: #2196F3;
+    color: white;
+    border: 6px solid #fff;
+    box-shadow: 0 10px 0 #0D47A1;
+    cursor: pointer;
+    transition: all 0.1s;
+    user-select: none;
+    -webkit-user-select: none;
+    font-family: var(--font-main);
+    min-height: clamp(60px, 15vmin, 100px);
+    touch-action: manipulation;
+}
+
+.btn-giant:active,
+.btn-giant.holding {
+    transform: scale(0.95);
+    background: #1976D2;
+    box-shadow: 0 4px 0 #0D47A1;
+}
+
+.progress-bar-container {
+    width: 300px;
+    height: 20px;
+    background: #333;
+    border-radius: 10px;
+    margin-top: 20px;
+    overflow: hidden;
+    border: 2px solid #555;
+}
+
+.progress-bar-fill {
+    width: 0%;
+    height: 100%;
+    background: #4CAF50;
+    transition: width 3s linear;
+}
+
+/* Sticker Preview */
+.stickers-preview {
+    position: absolute;
+    bottom: 20px;
+    width: 100%;
+    text-align: center;
+    font-size: 3rem;
+}
+
+.floating-sticker {
+    display: inline-block;
+    animation: float 3s infinite ease-in-out;
+
+    margin: 0 10px;
+}
+
+/* Sticker Book */
+.sticker-book {
+    background: url('data:image/svg+xml;utf8,<svg width="100" height="100" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><circle cx="50" cy="50" r="2" fill="%23FFE0B2" opacity="0.5"/></svg>'), #FFF8E1;
+    overflow: hidden;
+    /* Fix: Prevent whole page scroll */
+}
+
+.sticker-header {
+    width: 100%;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #FFECB3;
+    border-bottom: 4px solid #FFCA28;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+}
+
+.sticker-grid-container {
+    flex: 1;
+    width: 100%;
+    overflow-y: auto;
+    padding: 2vmin;
+    display: flex;
+    justify-content: center;
+}
+
+.sticker-grid {
+    width: 100%;
+    max-width: 900px;
+    padding: clamp(20px, 4vmin, 40px);
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(clamp(80px, 15vmin, 120px), 1fr));
+    gap: clamp(15px, 3vmin, 30px);
+    align-content: flex-start;
+    padding-bottom: clamp(60px, 10vmin, 100px);
+    /* Space for scroll */
+}
+
+.sticker-item {
+    width: 120px;
+    height: 120px;
+    background: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 5rem;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    transform: rotate(calc(var(--r, 0deg)));
+    transition: transform 0.2s;
+}
+
+.sticker-item:hover {
+    transform: scale(1.2) rotate(10deg);
+}
+
+.sticker-item:nth-child(2n) {
+    --r: 5deg;
+}
+
+.sticker-item:nth-child(3n) {
+    --r: -5deg;
+}
+
+.empty-msg {
+    font-size: 2rem;
+    color: #8D6E63;
+    opacity: 0.6;
+    margin-top: 50px;
+}
+
+@keyframes float {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+/* Game Interface */
+.game-viewport {
+    width: clamp(300px, 95vw, 1200px);
+    height: clamp(380px, 85vh, 900px);
+    /* Responsive height — prevents carousel/header overlap */
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 24px;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    padding: clamp(60px, 12vmin, 90px) clamp(10px, 2vmin, 20px) clamp(10px, 2vmin, 20px);
+    /* Top padding clears the game-header absolutely positioned above */
+    margin: clamp(5px, 1vmin, 10px) auto;
+    border: 4px solid #FFF;
+    overflow-y: auto;
+}
+
+.game-header {
+    position: absolute;
+    top: clamp(10px, 3vmin, 30px);
+    left: clamp(8px, 1.5vmin, 15px);
+    right: clamp(8px, 1.5vmin, 15px);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 100;
+    pointer-events: none;
+    gap: clamp(4px, 1vmin, 8px);
+    /* Let clicks pass through spacer */
+}
+
+.game-header button {
+    pointer-events: auto;
+    /* Re-enable clicks on buttons */
+}
+
+.btn-icon {
+    background: #fff;
+    border: 4px solid #eee;
+    /* Thicker border */
+    font-size: 2.2rem;
+    border-radius: 50%;
+    width: 70px;
+    /* Slightly smaller to save space */
+    height: 70px;
+    cursor: pointer;
+    transition: transform 0.1s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    display: flex;
+    /* Center icon */
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.15);
+}
+
+.btn-icon:active {
+    transform: scale(0.9);
+    background-color: #f0f0f0;
+}
+
+.level-indicator {
+    background: #FF9800;
+    color: white;
+    padding: clamp(4px, 1vmin, 8px) clamp(10px, 2.5vmin, 25px);
+    border-radius: 30px;
+    font-weight: 900;
+    font-size: clamp(0.9rem, 3vmin, 1.8rem);
+    font-family: var(--font-hand);
+    /* Use playful font */
+    box-shadow: 0 0.5vmin 0 #E65100;
+    border: 2px solid #fff;
+    white-space: nowrap;
+}
+
+/* Game Modes */
+.count-container {
+    flex-direction: column;
+    gap: 30px;
+    /* Increased gap */
+    width: 100%;
+    max-width: 900px;
+    align-items: center;
+}
+
+.items-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 25px;
+    /* Increased gap */
+    justify-content: center;
+    max-width: 100%;
+    padding: 10px;
+}
+
+.game-item {
+    font-size: 5rem;
+    /* Standard size */
+    width: 120px;
+    height: 120px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+    background: rgba(255, 255, 255, 0.5);
+    /* Subtle background */
+    border-radius: 20%;
+    user-select: none;
+}
+
+.game-item:active,
+.game-item.pulse {
+    transform: scale(1.15);
+}
+
+.options-row {
+    display: flex;
+    gap: 30px;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.option {
+    width: 90px;
+    height: 90px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2.5rem;
+    /* Larger numbers */
+}
+
+@keyframes point-click {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-15px);
+    }
+}
+
+/* Hand Pointer */
+.hand-pointer {
+    filter: drop-shadow(0 5px 10px rgba(0, 0, 0, 0.3));
+    font-size: 5rem !important;
+    /* Force large size */
+}
+
+/* Feedback Overlay */
+.feedback-overlay {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    font-size: 12rem;
+    /* Larger */
+    pointer-events: none;
+    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    z-index: 200;
+    text-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+}
+
+.feedback-overlay.active {
+    transform: translate(-50%, -50%) scale(1);
+    animation: wobble 0.6s ease-in-out;
+}
+
+@keyframes wobble {
+    0% {
+        transform: translate(-50%, -50%) rotate(0deg) scale(0.8);
+    }
+
+    15% {
+        transform: translate(-50%, -50%) rotate(-10deg) scale(1.1);
+    }
+
+    30% {
+        transform: translate(-50%, -50%) rotate(8deg) scale(1.1);
+    }
+
+    45% {
+        transform: translate(-50%, -50%) rotate(-6deg) scale(1.1);
+    }
+
+    60% {
+        transform: translate(-50%, -50%) rotate(4deg) scale(1.1);
+    }
+
+    75% {
+        transform: translate(-50%, -50%) rotate(-2deg) scale(1.1);
+    }
+
+    100% {
+        transform: translate(-50%, -50%) rotate(0deg) scale(1);
+    }
+}
+
+/* Celebration Overlay */
+.celebration-overlay {
+    background: rgba(0, 0, 0, 0.85);
+    z-index: 500;
+    transition: opacity 0.5s;
+}
+
+.celebration-emoji {
+    font-size: 12rem;
+    filter: drop-shadow(0 0 30px rgba(255, 215, 0, 0.5));
+}
+
+.sticker-reward {
+    font-size: 8rem;
+    background: white;
+    padding: 20px;
+    border-radius: 50%;
+    box-shadow: 0 0 50px white;
+    margin-top: 20px;
+    animation: spinPop 1s ease-out;
+}
+
+@keyframes spinPop {
+    from {
+        transform: scale(0) rotate(-180deg);
+    }
+
+    to {
+        transform: scale(1) rotate(0deg);
+    }
+}
+
+.fade-out {
+    opacity: 0;
+}
+
+/* Instruction Toast */
+.instruction-toast {
+    position: absolute;
+    bottom: 20%;
+    background: rgba(0, 0, 0, 0.7);
+    color: white;
+    padding: 10px 30px;
+    border-radius: 50px;
+    font-size: 2rem;
+    animation: fadeUp 0.5s ease-out;
+}
+
+@keyframes fadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Animations */
+.animate-pop {
+    animation: popIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+@keyframes popIn {
+    from {
+        opacity: 0;
+        transform: scale(0.8);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.animate-drop {
+    animation: dropIn 0.5s ease-out backwards;
+}
+
+@keyframes dropIn {
+    from {
+        opacity: 0;
+        transform: translateY(-50px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes point-click {
+
+    0%,
+    100% {
+        transform: translateY(0) scale(1);
+    }
+
+    50% {
+        transform: translateY(-10px) scale(1.2);
+    }
+}
+
+/* --- Game Mode Specifics --- */
+
+/* Compare Game */
+.compare-container {
+    display: flex;
+    gap: 20px;
+    width: 100%;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+}
+
+.compare-side {
+    flex: 1;
+    height: 80%;
+    background: #fff;
+    border: 4px solid #eee;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: transform 0.1s, border-color 0.2s;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+}
+
+.compare-side:active {
+    transform: scale(0.95);
+    border-color: #00BCD4;
+}
+
+.mini-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+}
+
+.mini-item {
+    font-size: 3rem;
+}
+
+/* Pattern Game */
+.pattern-container {
+    width: 100%;
+    gap: 40px;
+}
+
+.sequence-row {
+    display: flex;
+    gap: 10px;
+    background: rgba(255, 255, 255, 0.5);
+    padding: 20px;
+    border-radius: 20px;
+}
+
+.seq-item {
+    width: 80px;
+    height: 80px;
+    background: #fff;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 3rem;
+    box-shadow: 0 4px 0 rgba(0, 0, 0, 0.1);
+}
+
+.seq-item.question {
+    background: #eee;
+    color: #bbb;
+    border: 2px dashed #ccc;
+    box-shadow: none;
+}
+
+/* Find Odd Game */
+.odd-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+}
+
+.grid-item {
+    width: 90px;
+    height: 90px;
+    background: #fff;
+    border-radius: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 3.5rem;
+    cursor: pointer;
+    box-shadow: 0 6px 0 rgba(0, 0, 0, 0.1);
+    transition: transform 0.1s;
+}
+
+.grid-item:active {
+    transform: translateY(4px);
+    box-shadow: 0 2px 0 rgba(0, 0, 0, 0.1);
+}
+
+/* Sort Game */
+.sort-game {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    justify-content: space-between;
+}
+
+.items-pool {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.sort-item {
+    font-size: 4rem;
+    cursor: pointer;
+    transition: transform 0.2s;
+    filter: drop-shadow(0 5px 5px rgba(0, 0, 0, 0.2));
+}
+
+.sort-item:hover {
+    transform: scale(1.1);
+}
+
+.baskets-row {
+    display: flex;
+    justify-content: space-around;
+    padding-bottom: 20px;
+}
+
+/* Three-basket layout for advanced sorting */
+.baskets-row.three-baskets {
+    gap: 15px;
+}
+
+.baskets-row.three-baskets .basket {
+    width: 150px;
+    height: 130px;
+    font-size: 1.5rem;
+}
+
+.basket {
+    width: 200px;
+    /* Increased from 150px */
+    height: 150px;
+    /* Increased from 100px */
+    border: 6px dashed #8D6E63;
+    background: rgba(255, 255, 255, 0.6);
+    border-radius: 20px 20px 50px 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    color: #5D4037;
+    font-size: 2rem;
+    /* Bigger text */
+    text-align: center;
+    line-height: 1.2;
+}
+
+.hidden {
+    display: none !important;
+}
+
+.draggable {
+    touch-action: none;
+    cursor: grab;
+}
+
+.dragging {
+    opacity: 0.8;
+    transform: scale(1.1);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+    pointer-events: none;
+}
+
+/* Toddler Enhancements */
+.game-item,
+.sort-item,
+.grid-item,
+.btn-tile,
+.option,
+.basket,
+.btn-icon,
+.btn-giant,
+.btn-secondary {
+    min-width: 100px;
+    /* Increased from 80px */
+    min-height: 100px;
+    /* Increased from 80px */
+    touch-action: none;
+    /* Prevent zoom */
+}
+
+.game-item {
+    font-size: 8rem;
+    /* Increased from 6rem */
+}
+
+.instruction-sub {
+    font-size: 2.5rem;
+    /* Optimized for Sinhala text */
+    color: #fff;
+    text-align: center;
+    margin-bottom: 20px;
+    font-weight: 600;
+    background: linear-gradient(135deg, #2196F3, #1976D2);
+    padding: 15px 30px;
+    border-radius: 50px;
+    box-shadow: 0 5px 15px rgba(33, 150, 243, 0.3);
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    animation: pulseGlow 2s infinite;
+}
+
+@keyframes pulseGlow {
+
+    0%,
+    100% {
+        box-shadow: 0 5px 15px rgba(33, 150, 243, 0.3);
+    }
+
+    50% {
+        box-shadow: 0 5px 25px rgba(33, 150, 243, 0.5);
+    }
+}
+
+.hand-pointer {
+    filter: drop-shadow(0 5px 10px rgba(0, 0, 0, 0.3));
+}
+
+/* --- MISSING GAME STYLES (Restored) --- */
+
+/* 1. Compare Game ({..} vs {..}) */
+.compare-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 50px;
+    width: 100%;
+    height: 100%;
+}
+
+.compare-side {
+    background: rgba(255, 255, 255, 0.5);
+    border: 4px dashed #BCAAA4;
+    border-radius: 20px;
+    padding: 20px;
+    min-width: 300px;
+    min-height: 300px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    /* Interaction hint */
+    transition: transform 0.2s, background 0.2s;
+}
+
+.compare-side:active {
+    transform: scale(0.95);
+    background: #FFECB3;
+    border-color: #FFCA28;
+}
+
+.mini-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+}
+
+.mini-item {
+    font-size: 3rem;
+}
+
+/* 2. Pattern Game (A B A ?) */
+.pattern-container {
+    width: 100%;
+    gap: 40px;
+}
+
+.sequence-row {
+    display: flex;
+    gap: 20px;
+    background: #FFF3E0;
+    padding: 20px 40px;
+    border-radius: 50px;
+    box-shadow: inset 0 5px 10px rgba(0, 0, 0, 0.1);
+}
+
+.seq-item {
+    width: 100px;
+    height: 100px;
+    font-size: 4rem;
+    background: white;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 0 #ddd;
+}
+
+.drop-zone {
+    border: 4px dashed #FF9800;
+    background: rgba(255, 255, 255, 0.5);
+    color: #FF9800;
+    font-weight: bold;
+}
+
+/* 3. Find Odd (Grid) */
+.odd-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    padding: 20px;
+}
+
+.grid-item {
+    width: 140px;
+    height: 140px;
+    background: white;
+    border-radius: 25px;
+    font-size: 5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 8px 0 rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    transition: transform 0.1s;
+    border: 4px solid transparent;
+}
+
+.grid-item:active {
+    transform: scale(0.9);
+}
+
+/* 4. Sort Game (Baskets) */
+.sort-game {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+    padding-bottom: 20px;
+}
+
+.items-pool {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 20px;
+    min-height: 150px;
+}
+
+.sort-item {
+    font-size: 5rem;
+    cursor: grab;
+    transition: opacity 0.3s;
+    user-select: none;
+    /* Optional: circle bg */
+    width: 100px;
+    height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: white;
+    border-radius: 50%;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+}
+
+.sort-item.dragging {
+    opacity: 0.8;
+    transform: scale(1.2);
+    pointer-events: none;
+    /* Let clicks pass through to drop zones if needed */
+}
+
+.baskets-row {
+    display: flex;
+    gap: 50px;
+    margin-bottom: 20px;
+}
+
+.basket {
+    width: 180px;
+    height: 180px;
+    background: #FFF8E1;
+    border: 6px solid #FFB74D;
+    border-radius: 0 0 40px 40px;
+    /* Bucket shape */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: 3rem;
+    /* Label Emoji Size */
+    font-weight: bold;
+    color: #E65100;
+    text-align: center;
+    line-height: 1.2;
+    box-shadow: 0 10px 0 #F57C00;
+}
+
+/* 5. Add Game (Equation) */
+.add-game {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.group-box {
+    background: white;
+    padding: 15px 25px;
+    border-radius: 20px;
+    border: 3px solid #eee;
+    margin: 0 15px;
+    letter-spacing: -10px;
+    /* Overlap emojis slightly */
+    box-shadow: inset 0 5px 10px rgba(0, 0, 0, 0.05);
+}
+
+/* Ensure hidden works */
+.hidden {
+    display: none !important;
+}
+
+/* ========================================
+   RESPONSIVE MEDIA QUERIES
+   ======================================== */
+
+/* --- Mobile (max 600px) --- */
+@media (max-width: 600px) {
+    .compare-container {
+        flex-direction: column;
+        gap: 2vmin;
+    }
+
+    .compare-side {
+        min-width: 200px;
+        min-height: 150px;
+    }
+
+    .basket {
+        width: clamp(90px, 20vmin, 130px);
+        height: clamp(90px, 20vmin, 130px);
+        font-size: clamp(1.2rem, 3vmin, 2rem);
+    }
+
+    .game-item {
+        font-size: clamp(2.5rem, 8vmin, 5rem);
+    }
+
+    .seq-item {
+        width: clamp(55px, 12vmin, 80px);
+        height: clamp(55px, 12vmin, 80px);
+        font-size: clamp(1.8rem, 5vmin, 3rem);
+    }
+
+    .grid-item {
+        width: clamp(70px, 18vmin, 110px);
+        height: clamp(70px, 18vmin, 110px);
+        font-size: clamp(2rem, 6vmin, 3.5rem);
+    }
+
+    .carousel-strip {
+        height: clamp(80px, 22vmin, 140px);
+    }
+
+    .game-title {
+        font-size: clamp(2rem, 7vmin, 3.5rem);
+    }
+}
+
+/* --- Landscape Orientation (phones & small tablets) --- */
+@media (orientation: landscape) and (max-height: 500px) {
+    .game-viewport {
+        height: 92vh;
+        padding-top: clamp(44px, 8vmin, 60px);
+    }
+
+    .carousel-strip {
+        height: clamp(60px, 18vmin, 110px);
+    }
+
+    .top-bar {
+        padding: clamp(4px, 1vmin, 8px) clamp(8px, 2vmin, 18px);
+    }
+
+    .btn-nav {
+        padding: clamp(4px, 1vmin, 8px) clamp(8px, 2vmin, 16px);
+        font-size: clamp(0.8rem, 2.5vmin, 1.2rem);
+        min-height: clamp(36px, 6vmin, 48px);
+    }
+
+    .game-title {
+        font-size: clamp(1.5rem, 6vmin, 3rem);
+        margin-bottom: 1vmin;
+    }
+
+    .title-container {
+        margin-top: clamp(-15px, -3vmin, -5px);
+        padding-top: clamp(40px, 8vmin, 55px);
+    }
+}
+
+/* --- Tablet Portrait (601–1024px) --- */
+@media (min-width: 601px) and (max-width: 1024px) {
+    .game-viewport {
+        width: clamp(500px, 90vw, 900px);
+        height: clamp(450px, 88vh, 850px);
+    }
+
+    .compare-side {
+        min-width: clamp(180px, 30vmin, 280px);
+        min-height: clamp(180px, 30vmin, 280px);
+    }
+
+    .basket {
+        width: clamp(140px, 22vmin, 200px);
+        height: clamp(140px, 22vmin, 200px);
+    }
+}
+
+/* --- Desktop (1025px+) --- */
+@media (min-width: 1025px) {
+    .game-viewport {
+        width: clamp(650px, 70vw, 1100px);
+        height: clamp(500px, 82vh, 900px);
+    }
+
+    .carousel-strip {
+        height: clamp(120px, 22vmin, 180px);
+    }
+
+    .btn-nav {
+        padding: clamp(10px, 1.5vmin, 16px) clamp(20px, 3vmin, 30px);
+    }
+}
+
+/* --- SINHALA SPECIFIC OVERRIDES --- */
+
+/* 1. Global Font Adjustment */
+body.lang-si {
+    /* Sinhala intricate glyphs look better with slightly less weight than 900 */
+    font-weight: 600;
+}
+
+/* 2. Looser Line Heights for Tall Glyphs (Ascenders/Descenders) */
+body.lang-si .game-title {
+    line-height: 1.3;
+    font-size: 4rem;
+    /* Reduce slightly to prevent overflow with taller lines */
+    padding-top: 10px;
+}
+
+body.lang-si .tile-label {
+    line-height: 1.3;
+    font-size: 0.95rem;
+    /* Slight reduction to fit 2-3 lines */
+    font-weight: 700;
+    /* 900 might be too bold/blobby for complex glyphs */
+}
+
+body.lang-si .btn-tile {
+    /* Reduce boldness to ensure loop clarity */
+    font-weight: 700;
+    line-height: 1.2;
+}
+
+body.lang-si .instruction-sub,
+body.lang-si .instruction-toast {
+    line-height: 1.4;
+    font-weight: 600;
+}
+
+body.lang-si .gate-msg,
+body.lang-si .celebration-overlay h1 {
+    line-height: 1.4;
+}
+
+/* 3. Adjust Tile Layout for Longer Text */
+body.lang-si .game-tile {
+    padding-bottom: 5px;
+    /* Less bottom padding to give text room */
+    justify-content: space-evenly;
+    /* Better distribution */
+}
+
+body.lang-si .tile-icon {
+    font-size: 3rem;
+    /* Slightly smaller icon to give text more room */
+    margin-bottom: 0;
+}
+
+/* --- 4 YEAR UPGRADE OVERRIDES --- */
+
+/* 1. Comparison Game: Denser Grids */
+.mini-grid.four-year {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 5px;
+}
+
+.mini-grid.four-year .mini-item {
+    font-size: 1.8rem;
+    /* Smaller items to fit more */
+}
+
+/* 2. Odd One Out: Progressive Grid Sizes */
+.odd-grid.four-year {
+    gap: 10px;
+}
+
+/* Small grid (2x2, 4 items) - larger items for easier tapping */
+.odd-grid.grid-small .grid-item {
+    width: 140px;
+    height: 140px;
+    font-size: 5rem;
+    border-radius: 25px;
+}
+
+/* Medium grid (2x3, 6 items) */
+.odd-grid.grid-medium .grid-item {
+    width: 120px;
+    height: 120px;
+    font-size: 4.5rem;
+    border-radius: 22px;
+}
+
+/* Large grid (3x3, 9 items) */
+.odd-grid.grid-large .grid-item,
+.odd-grid.four-year .grid-item {
+    width: 100px;
+    height: 100px;
+    font-size: 4rem;
+    /* Reduced from 5rem */
+    border-radius: 20px;
+}
+
+/* 3. Counting Game: More Items */
+.count-container .items-grid {
+    gap: 10px;
+    /* Tighter gap */
+}
+
+/* Dynamic sizing for large counts handled by flex, but let's ensure they shrink if needed */
+.game-item {
+    flex-shrink: 1;
+    /* Allow shrinking if needed on small screens */
+    min-width: 80px;
+    min-height: 80px;
+    font-size: 4rem;
+    /* Base size reduced slightly for potential 20 items */
+}
+
+@media (max-width: 600px) {
+    .mini-grid.four-year {
+        grid-template-columns: repeat(3, 1fr);
+        /* 3 cols on mobile */
+    }
+
+    .odd-grid.four-year .grid-item {
+        width: 70px;
+        height: 70px;
+        font-size: 2.5rem;
+    }
+
+    .game-item {
+        min-width: 60px;
+        min-height: 60px;
+        font-size: 3rem;
+    }
+}
+
+/* --- NEW GAME MODES (Memory & Subtraction) --- */
+
+/* Memory Game - Container */
+.memory-grid {
+    width: 100%;
+    max-width: 600px;
+    margin: 20px auto;
+    justify-content: center;
+}
+
+/* Card Flip Styles */
+.memory-card {
+    background: transparent;
+    perspective: 1000px;
+    cursor: pointer;
+    min-width: 80px;
+    aspect-ratio: 1;
+    position: relative;
+}
+
+.memory-card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    transition: transform 0.6s cubic-bezier(0.4, 0.0, 0.2, 1);
+    transform-style: preserve-3d;
+}
+
+.memory-card.flipped .memory-card-inner {
+    transform: rotateY(180deg);
+}
+
+.memory-front,
+.memory-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 3.5rem;
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+    border: 3px solid #fff;
+    user-select: none;
+}
+
+/* Front is the Question Mark side initially (actually the back in 3D space) */
+.memory-front {
+    background: linear-gradient(135deg, #FFB74D, #F57C00);
+    color: white;
+    text-shadow: 0 2px 0 rgba(0, 0, 0, 0.2);
+}
+
+/* Back is the Content side (revealed on flip) */
+.memory-back {
+    background: white;
+    transform: rotateY(180deg);
+    border: 3px solid #F57C00;
+}
+
+.memory-card.matched .memory-back {
+    background: #DCEDC8;
+    /* Light Green */
+    border-color: #689F38;
+    box-shadow: 0 0 15px #8BC34A;
+}
+
+
+/* Subtraction Game */
+.sub-item {
+    font-size: 4.5rem;
+    margin: 10px;
+    transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    display: inline-block;
+    filter: drop-shadow(0 4px 2px rgba(0, 0, 0, 0.1));
+    position: relative;
+}
+
+.sub-item.removed {
+    transform: scale(0.8) rotate(15deg);
+    opacity: 0.5;
+    filter: grayscale(100%);
+}
+
+.sub-item.removed::after {
+    content: '❌';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 3.5rem;
+    opacity: 0.8;
+    text-shadow: 0 0 5px white;
+}
+
+/* Mobile adjustments */
+@media (max-width: 600px) {
+
+    .memory-front,
+    .memory-back {
+        font-size: 2.5rem;
+    }
+
+    .sub-item {
+        font-size: 3.5rem;
+        margin: 5px;
+    }
+
+    .sub-item.removed::after {
+        font-size: 2.5rem;
+    }
+}
+
+/* Intermediate Mobile/Tablet Breakpoint */
+@media (min-width: 481px) and (max-width: 600px) {
+    .carousel-strip {
+        bottom: clamp(48px, 6.5vh, 62px);
+        /* Adjusted for this screen range */
+    }
+
+    .top-bar {
+        top: clamp(60px, 7.5vh, 85px);
+    }
+
+    .tile-label {
+        font-size: clamp(0.7rem, 2.5vmin, 1rem);
+        line-height: 1.25;
+    }
+
+    #app {
+        padding-top: 51px;
+        padding-bottom: 51px;
+    }
+}
+
+/* Mobile Responsive Overrides */
+@media (max-width: 480px) {
+    .btn-nav {
+        padding: clamp(4px, 1vmin, 8px) clamp(8px, 1.5vmin, 12px);
+        font-size: 0.9rem;
+        /* Reduced from 1rem to prevent overflow */
+        min-height: 40px;
+        gap: 5px;
+    }
+
+    #app {
+        padding-top: 52px;
+        /* Extra padding for very small screens */
+        padding-bottom: 52px;
+    }
+
+    .carousel-strip {
+        bottom: clamp(50px, 7vh, 65px);
+        /* More space on small screens */
+        height: clamp(65px, 14vmin, 100px);
+        /* Slightly reduced height */
+    }
+
+    .game-tile {
+        min-width: clamp(65px, 17vmin, 130px);
+        /* Slightly smaller tiles on mobile */
+        min-height: clamp(65px, 17vmin, 130px);
+        padding: 1.2vmin;
+        /* Reduced padding */
+    }
+
+    .tile-label {
+        font-size: clamp(0.65rem, 2.2vmin, 0.9rem);
+        /* Smaller font to prevent overflow */
+        line-height: 1.2;
+        padding: 0 2px;
+        /* Add horizontal padding for breathing room */
+    }
+
+    .tile-icon {
+        font-size: clamp(2rem, 8vmin, 3.5rem);
+        /* Slightly smaller icons */
+    }
+
+    .top-bar {
+        top: clamp(52px, 6.5vh, 70px);
+        /* Adjusted for small screens */
+        padding: clamp(4px, 1vmin, 8px) clamp(8px, 1.5vmin, 15px);
+        /* Reduced padding */
+    }
+}
